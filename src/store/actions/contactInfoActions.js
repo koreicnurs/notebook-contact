@@ -59,12 +59,12 @@ export const removeContact = id => {
 
 export const editContactData = (id, data) => {
     return async (dispatch) => {
-        dispatch(deleteContactRequest());
+        dispatch(editContactRequest());
         try {
             await axiosApi.put(`/contacts/${id}.json`, data);
-            dispatch(deleteContactSuccess());
+            dispatch(editContactSuccess());
         } catch (e) {
-            dispatch(deleteContactFailure(e));
+            dispatch(editContactFailure(e));
             throw e;
         } finally {
             dispatch(getContacts());

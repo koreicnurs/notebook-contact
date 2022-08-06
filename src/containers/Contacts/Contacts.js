@@ -2,18 +2,18 @@ import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {getContacts, setPurchasingOpen} from "../../store/actions/contactsActions";
 import {Card, CardContent, CardMedia, Typography} from "@mui/material";
-import {NavLink, useHistory} from "react-router-dom";
-import './Contacts.css';
+import {NavLink} from "react-router-dom";
 import Modal from "../../components/UI/Modal/Modal";
 import ContactInfo from "../../components/ContactInfo/ContactInfo";
 import {getContact} from "../../store/actions/contactInfoActions";
+import Spinner from "../../components/UI/Spinner/Spinner";
+import './Contacts.css';
 
 const Contacts = () => {
     const dispatch = useDispatch();
     const contacts = useSelector(state => state.contactsCombine.contacts);
     const loading = useSelector(state => state.contactsCombine.loading);
     const purchasing = useSelector(state => state.contactsCombine.purchasing);
-    const history = useHistory();
 
     useEffect(() => {
         dispatch(getContacts());
@@ -28,11 +28,7 @@ const Contacts = () => {
         dispatch(setPurchasingOpen(false));
     };
 
-    const purchaseEdit = () => {
-        history.push('/edit');
-    };
-
-    return (
+    return loading ? (<Spinner/>) : (
         <>
             <Modal
                 show={purchasing}

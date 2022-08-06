@@ -15,24 +15,23 @@ const EditDish = () => {
     const match = useRouteMatch();
 
     useEffect(() => {
-        editContactHandler(match.params.id);
-    }, [match.params.id]);
+        const editContactHandler = () => {
+            contacts.map(c => {
+                if (c.name === match.params.id) {
+                    match.params.id = c.id
+                    dispatch(getContact(match.params.id));
+                    dispatch(editContactData(match.params.id))
+                }
+                return null
+            });
+            dispatch(setPurchasingOpen(false));
+        };
+        editContactHandler();
+    }, [dispatch, contacts, match.params]);
 
     useEffect(() => {
         setContact(contactData);
     }, [contactData]);
-
-    const editContactHandler = (name) => {
-        contacts.map(c => {
-            if (c.name === name) {
-                match.params.id = c.id
-                dispatch(getContact(match.params.id));
-                dispatch(editContactData(match.params.id))
-            }
-            return null
-        });
-        dispatch(setPurchasingOpen(false));
-    };
 
     const [contact, setContact] = useState({
         name: '',
