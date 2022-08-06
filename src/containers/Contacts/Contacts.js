@@ -32,10 +32,6 @@ const Contacts = () => {
         history.push('/edit');
     };
 
-    const d = (id) => {
-
-    };
-
     return (
         <>
             <Modal

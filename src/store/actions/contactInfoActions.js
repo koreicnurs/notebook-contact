@@ -9,6 +9,10 @@ export const DELETE_CONTACT_REQUEST = 'DELETE_CONTACT_REQUEST';
 export const DELETE_CONTACT_SUCCESS = 'DELETE_CONTACT_SUCCESS';
 export const DELETE_CONTACT_FAILURE = 'DELETE_CONTACT_FAILURE';
 
+export const EDIT_CONTACT_REQUEST = 'EDIT_CONTACT_REQUEST';
+export const EDIT_CONTACT_SUCCESS = 'EDIT_CONTACT_SUCCESS';
+export const EDIT_CONTACT_FAILURE = 'EDIT_CONTACT_FAILURE';
+
 export const fetchContactRequest = () => ({type: FETCH_CONTACT_REQUEST});
 export const fetchContactSuccess = contact => ({type: FETCH_CONTACT_SUCCESS, payload: contact});
 export const fetchContactFailure = error => ({type: FETCH_CONTACT_FAILURE, payload: error});
@@ -16,6 +20,10 @@ export const fetchContactFailure = error => ({type: FETCH_CONTACT_FAILURE, paylo
 export const deleteContactRequest = () => ({type: DELETE_CONTACT_REQUEST});
 export const deleteContactSuccess = () => ({type: DELETE_CONTACT_SUCCESS});
 export const deleteContactFailure = error => ({type: DELETE_CONTACT_FAILURE, payload: error});
+
+export const editContactRequest = () => ({type: EDIT_CONTACT_REQUEST});
+export const editContactSuccess = () => ({type: EDIT_CONTACT_SUCCESS });
+export const editContactFailure = error => ({type: EDIT_CONTACT_FAILURE, payload: error});
 
 export const getContact = id => {
     return async (dispatch) => {
@@ -39,6 +47,21 @@ export const removeContact = id => {
         dispatch(deleteContactRequest());
         try {
             await axiosApi.delete(`/contacts/${id}.json`);
+            dispatch(deleteContactSuccess());
+        } catch (e) {
+            dispatch(deleteContactFailure(e));
+            throw e;
+        } finally {
+            dispatch(getContacts());
+        }
+    };
+};
+
+export const editContactData = (id, data) => {
+    return async (dispatch) => {
+        dispatch(deleteContactRequest());
+        try {
+            await axiosApi.put(`/contacts/${id}.json`, data);
             dispatch(deleteContactSuccess());
         } catch (e) {
             dispatch(deleteContactFailure(e));

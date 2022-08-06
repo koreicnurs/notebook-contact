@@ -4,29 +4,24 @@ import {useDispatch, useSelector} from "react-redux";
 import './ContactInfo.css';
 import {removeContact} from "../../store/actions/contactInfoActions";
 import Spinner from "../UI/Spinner/Spinner";
-import {getContacts, setPurchasingOpen} from "../../store/actions/contactsActions";
-import {useHistory} from "react-router-dom";
+import {setPurchasingOpen} from "../../store/actions/contactsActions";
+import {NavLink} from "react-router-dom";
 
 const ContactInfo = (props) => {
     const dispatch = useDispatch();
     const contact = useSelector(state => state.contactInfo.contact);
     const contacts = useSelector(state => state.contactsCombine.contacts);
     const loading = useSelector(state => state.contactInfo.loading);
-    const history = useHistory();
 
     const deleteContactHandler = (name) => {
         contacts.map(c => {
-            if(c.name === name) {
-               dispatch(removeContact(c.id));
+            if (c.name === name) {
+                dispatch(removeContact(c.id));
             }
             return null
         });
         dispatch(setPurchasingOpen(false));
     };
-
-    useEffect(() => {
-
-    },[])
 
     return loading ? (<Spinner/>)
         : contact && (
@@ -49,7 +44,7 @@ const ContactInfo = (props) => {
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button size="small">Edit</Button>
+                <NavLink to={`edit/${contact.name}`}>Edit</NavLink>
                 <Button size="small" onClick={() => deleteContactHandler(contact.name)}>Delete</Button>
             </CardActions>
         </>
