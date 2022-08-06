@@ -1,12 +1,11 @@
-import {BrowserRouter, Route, Switch} from "react-router-dom";
+import Contacts from "./containers/Contacts/Contacts";
+import {Route, Switch} from "react-router-dom";
 
 const App = () => (
-    <BrowserRouter>
       <Switch>
-        {/*<Route path="/" exact component={}/>*/}
+        <Route path="/" exact component={Contacts}/>
         <Route render={() => <h1>Not found</h1>}/>
       </Switch>
-    </BrowserRouter>
 );
 
 export default App;
