@@ -1,13 +1,19 @@
+body {
+    background: azure;
+}
+
 .contacts {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 50px;
 }
 
 .contact {
     display: flex;
-    width: 50%;
+    width: 40%;
     margin-bottom: 50px;
+    padding: 20px 10px;
 }
 
 .img-contact {
@@ -16,4 +22,53 @@
 
 .MuiCardContent-root.css-46bh2p-MuiCardContent-root {
     align-self: center;
+}
+
+.btn-link , .btn-link:visited {
+    border: none;
+    color: #5d5dff;
+    text-align: center;
+    padding: 0 10px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    text-decoration: none;
+    font-size: 15px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+.btn-link:hover, .btn-link:active {
+    background-color: #bebeee;
+    border-radius: 20px;
+}
+
+.add-link {
+    font-size: 1.5em;
+    align-self: end;
+    margin: 0 28% 5% 0;
+    font-family: Purisa;
+}
+
+.title-contacts {
+    text-decoration: none;
+    font-size: 35px;
+    align-self: start;
+    margin: 0 0 0 29%;
+    font-family: Z003;
+    text-transform: uppercase;
+}
+
+.MuiTypography-root.MuiTypography-h5.MuiTypography-gutterBottom.css-h93ljk-MuiTypography-root {
+    font-family: Suruma;
+    margin: 0 0 0 40px;
+    color: #055d80;
+}
+
+.MuiTypography-root.MuiTypography-h5.MuiTypography-gutterBottom.css-h93ljk-MuiTypography-root:hover {
+    font-size: 30px;
+}
+
+.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.MuiCard-root.contact.css-bhp9pd-MuiPaper-root-MuiCard-root:hover {
+    cursor: pointer;
+    background: #8ed3dc;
+    border-radius: 20px;
 }

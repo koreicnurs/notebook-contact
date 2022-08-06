@@ -57,6 +57,7 @@ const EditDish = () => {
 
     return loading ? (<Spinner/>) : contact && (
         <Form
+            title='Edit contact'
             submitFormData={onSubmitHandler}
             onInputChange={onInputChange}
             name={contact.name}

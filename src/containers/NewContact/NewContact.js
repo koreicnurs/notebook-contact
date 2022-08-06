@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {Button} from "@mui/material";
 import {useHistory} from "react-router-dom";
 import Spinner from "../../components/UI/Spinner/Spinner";
 import {createContact} from "../../store/actions/contactsActions";
@@ -35,6 +34,7 @@ const AddDish = () => {
 
     return loading ? (<Spinner/>) : (
         <Form
+            title='Add new contact'
             submitFormData={onSubmitHandler}
             onInputChange={onInputChange}
             name={contact.name}

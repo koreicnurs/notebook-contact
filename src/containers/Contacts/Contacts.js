@@ -37,6 +37,7 @@ const Contacts = () => {
                 <ContactInfo/>
             </Modal>
             <div className='contacts'>
+                <a className='title-contacts' href="/">Contacts</a>
                 <NavLink className='btn-link add-link' to='/new'>Add Contact</NavLink>
                 {contacts.map(c => {
                     return (

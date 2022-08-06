@@ -1,3 +1,28 @@
+.info-contact {
+    display: flex;
+    justify-content: center;
+    font-family: Gubbi;
+}
+
 .image-contact-modal {
     max-width: 200px;
+}
+
+.MuiCardActions-root.MuiCardActions-spacing.css-1t6e9jv-MuiCardActions-root {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.edit-link {
+    margin-bottom: 10px;
+}
+
+.MuiTypography-root.MuiTypography-h3.MuiTypography-gutterBottom.css-1mktp8m-MuiTypography-root {
+    font-family: "Lohit Bengali";
+}
+
+p.MuiTypography-root.MuiTypography-body2.css-r40f8v-MuiTypography-root {
+    font-family: Gubbi;
 }
