@@ -26,8 +26,18 @@ export const getContacts = () => {
 
         try{
             const response = await axiosApi.get('/contacts.json');
+            const arrayContacts = Object.keys(response.data).map(r => {
+                const info = response.data[r]
+                return {
+                    id: r,
+                    name: info.name,
+                    phone: info.phone,
+                    email: info.email,
+                    photo: info.photo,
+                }
+            })
             if (response.data !== null) {
-                dispatch(fetchContactsSuccess(response.data));
+                dispatch(fetchContactsSuccess(arrayContacts));
             } else {
                 dispatch(fetchContactsSuccess(null))
             }

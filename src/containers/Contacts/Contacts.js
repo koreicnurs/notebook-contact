@@ -5,7 +5,6 @@ import {Card, CardContent, CardMedia, Typography} from "@mui/material";
 import {NavLink, useHistory} from "react-router-dom";
 import './Contacts.css';
 import Modal from "../../components/UI/Modal/Modal";
-import EditContact from "../EditContact/EditContact";
 import ContactInfo from "../../components/ContactInfo/ContactInfo";
 import {getContact} from "../../store/actions/contactInfoActions";
 
@@ -33,37 +32,32 @@ const Contacts = () => {
         history.push('/edit');
     };
 
+    const d = (id) => {
+
+    };
+
     return (
         <>
             <Modal
                 show={purchasing}
                 closed={purchaseCancelHandler}
             >
-                <ContactInfo
-                    // imageContact={}
-                    // altImage={}
-                    // contactName={}
-                    // contactPhone={}
-                    // contactEmail={}
-                    // editContact={}
-                    // deleteContact={}
-                />
+                <ContactInfo/>
             </Modal>
             <div className='contacts'>
                 <NavLink className='btn-link add-link' to='/new'>Add Contact</NavLink>
-                {Object.keys(contacts).map(c => {
-                    const contact = contacts[c]
+                {contacts.map(c => {
                     return (
-                        <Card className='contact' key={c} onClick={() => purchaseHandler(c)}>
+                        <Card className='contact' key={c.id} onClick={() => purchaseHandler(c.id)}>
                             <CardMedia
                                 className='img-contact'
                                 component="img"
-                                image={contact.photo}
-                                alt={contact.name}
+                                image={c.photo}
+                                alt={c.name}
                             />
                             <CardContent>
                                 <Typography gutterBottom variant="h5" component="div">
-                                    {contact.name}
+                                    {c.name}
                                 </Typography>
                             </CardContent>
                         </Card>
