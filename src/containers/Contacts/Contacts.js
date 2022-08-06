@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {getContacts} from "../../store/actions/contactsActions";
 import {Card, CardContent, CardMedia, Typography} from "@mui/material";
 import './Contacts.css';
+import {NavLink} from "react-router-dom";
 
 const Contacts = () => {
     const dispatch = useDispatch();
@@ -15,6 +16,7 @@ const Contacts = () => {
 
     return (
         <div className='contacts'>
+            <NavLink className='btn-link add-link' to='/new'>Add Contact</NavLink>
             {Object.keys(contacts).map(c => {
                 const contact = contacts[c]
                 return (
