@@ -29,6 +29,7 @@ const AddDish = () => {
     const onSubmitHandler = async e => {
         e.preventDefault();
         await dispatch(createContact(contact));
+        history.push('/');
     };
 
     return loading ? (<Spinner/>) : (
@@ -68,7 +69,7 @@ const AddDish = () => {
                 />
                 Photo preview <img src={contact.photo} alt={contact.name}/>
                 <Button variant="contained" type='submit'>Save</Button>
-                <Button variant="contained" type='button'>Back to Contacts</Button>
+                <Button variant="contained" type='button' onClick={() => history.push('/')}>Back to Contacts</Button>
             </form>
         </>
     );

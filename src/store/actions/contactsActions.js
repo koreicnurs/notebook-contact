@@ -1,8 +1,8 @@
 import axiosApi from "../../axiosApi";
 
-export const SET_MODAL_OPEN = 'SET_MODAL_OPEN';
+export const SET_PURCHASING_OPEN = 'SET_PURCHASING_OPEN';
 
-export const setModalOpen = isOpen => ({type: SET_MODAL_OPEN, payload: isOpen});
+export const setPurchasingOpen = isOpen => ({type: SET_PURCHASING_OPEN, payload: isOpen});
 
 export const FETCH_CONTACTS_REQUEST = 'FETCH_CONTACTS_REQUEST';
 export const FETCH_CONTACTS_SUCCESS = 'FETCH_CONTACTS_SUCCESS';
