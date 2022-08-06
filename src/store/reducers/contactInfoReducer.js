@@ -14,7 +14,7 @@ const contactsReducer = (state = initialState, action) => {
         case FETCH_CONTACT_SUCCESS:
             return {...state, loading: false, contact: action.payload};
         case FETCH_CONTACT_FAILURE:
-            return {...state, loading: false, error: action.payload}
+            return {...state, loading: false, error: action.payload};
         default:
             return state;
     }

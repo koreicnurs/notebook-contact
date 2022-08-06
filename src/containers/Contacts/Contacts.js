@@ -21,7 +21,7 @@ const Contacts = () => {
 
     const purchaseHandler = (id) => {
         dispatch(setPurchasingOpen(true));
-        dispatch(getContact(id))
+        dispatch(getContact(id));
     };
 
     const purchaseCancelHandler = () => {

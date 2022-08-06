@@ -2,9 +2,9 @@ import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {useHistory, useRouteMatch} from "react-router-dom";
 import Spinner from "../../components/UI/Spinner/Spinner";
-import {Button} from "@mui/material";
 import {setPurchasingOpen} from "../../store/actions/contactsActions";
 import {editContactData, getContact} from "../../store/actions/contactInfoActions";
+import Form from "../../components/Form/Form";
 
 const EditDish = () => {
     const dispatch = useDispatch();
@@ -18,11 +18,11 @@ const EditDish = () => {
         const editContactHandler = () => {
             contacts.map(c => {
                 if (c.name === match.params.id) {
-                    match.params.id = c.id
+                    match.params.id = c.id;
                     dispatch(getContact(match.params.id));
-                    dispatch(editContactData(match.params.id))
+                    dispatch(editContactData(match.params.id));
                 }
-                return null
+                return null;
             });
             dispatch(setPurchasingOpen(false));
         };
@@ -56,46 +56,14 @@ const EditDish = () => {
     };
 
     return loading ? (<Spinner/>) : contact && (
-
-        <>
-            <form onSubmit={onSubmitHandler}>
-                <input
-                    type="text"
-                    className="Input"
-                    name="name"
-                    value={contact.name}
-                    onChange={onInputChange}
-                    placeholder="Name"
-                />
-                <input
-                    type="phone"
-                    className="Input"
-                    name="phone"
-                    value={contact.phone}
-                    onChange={onInputChange}
-                    placeholder="Phone"
-                />
-                <input
-                    type="email"
-                    className="Input"
-                    name="email"
-                    value={contact.email}
-                    onChange={onInputChange}
-                    placeholder="Email"
-                />
-                <input
-                    type="text"
-                    className="Input"
-                    name="photo"
-                    value={contact.photo}
-                    onChange={onInputChange}
-                    placeholder="Photo"
-                />
-                Photo preview <img src={contact.photo} alt={contact.name}/>
-                <Button variant="contained" type='submit'>Save</Button>
-                <Button variant="contained" type='button' onClick={() => history.push('/')}>Back to Contacts</Button>
-            </form>
-        </>
+        <Form
+            submitFormData={onSubmitHandler}
+            onInputChange={onInputChange}
+            name={contact.name}
+            phone={contact.phone}
+            email={contact.email}
+            photo={contact.photo}
+        />
     );
 };
 

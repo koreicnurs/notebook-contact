@@ -33,7 +33,7 @@ export const getContact = id => {
             if (response.data !== null) {
                 dispatch(fetchContactSuccess(response.data));
             } else {
-                dispatch(fetchContactSuccess(null))
+                dispatch(fetchContactSuccess(null));
             }
         } catch (e) {
             dispatch(fetchContactFailure(e));
